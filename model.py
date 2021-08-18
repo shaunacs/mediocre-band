@@ -43,6 +43,13 @@ class LikedSongs(db.Model):
 
     liked_songs_list_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    song_id = db.Column(db.Integer, db.ForeignKey('songs.song_id'))
+
+    song = db.relationship('Song', backref='liked_song')
+    user = db.relationship('User', backref="liked_song")
+
+    def __repr__(self):
+        return f'<LikedSong user_id={self.user_id} song_id={self.song_id}>'
 
 
 
