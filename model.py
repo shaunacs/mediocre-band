@@ -17,8 +17,6 @@ class User(db.Model):
     username = db.Column(db.String(30), unique=True)
     password = db.Column(db.String(20))
 
-    liked_songs = db.relationship('LikedSongs', backref='user')
-
     def __repr__(self):
         return f'<User user_id={self.user_id} name={self.fname} {self.lname}>'
 
@@ -36,7 +34,7 @@ class Song(db.Model):
         return f'<Song title={self.title} author={self.author}>'
 
 
-class LikedSongs(db.Model):
+class LikedSong(db.Model):
     """A user's liked songs"""
 
     __tablename__ = "liked_songs"
@@ -45,8 +43,8 @@ class LikedSongs(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     song_id = db.Column(db.Integer, db.ForeignKey('songs.song_id'))
 
-    song = db.relationship('Song', backref='liked_song')
-    user = db.relationship('User', backref="liked_song")
+    song = db.relationship('Song', backref='liked_songs')
+    user = db.relationship('User', backref="liked_songs")
 
     def __repr__(self):
         return f'<LikedSong user_id={self.user_id} song_id={self.song_id}>'
