@@ -43,7 +43,7 @@ class LikedSong(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     song_id = db.Column(db.Integer, db.ForeignKey('songs.song_id'))
 
-    song = db.relationship('Song', backref='liked_songs')
+    song = db.relationship('Song', backref='likes')
     user = db.relationship('User', backref="liked_songs")
 
     def __repr__(self):
