@@ -33,6 +33,12 @@ def create_liked_song(user, song):
 
     return liked_song
 
+
+def view_all_songs():
+    """Returns a list of all songs"""
+
+    return Song.query.all()
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
