@@ -1,11 +1,14 @@
 function SongList() {
-    let songs;
+    const songs = [];
+
     $.get('/songs', (res) => {
-        console.log(res);
-        songs = res;
-        console.log(songs);
+
+        for (const song of res) {
+            songs.push(song);
+        }
     }
     );
+
     return songs;
 
 }
@@ -13,6 +16,8 @@ function SongList() {
 
 function HomePage() {
     const songs = SongList();
+    console.log(songs);
+
     return (
         <div>
             <h1>MediocreBand</h1>

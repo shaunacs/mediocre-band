@@ -17,7 +17,8 @@ def render_homepage():
 @app.route('/songs')
 def show_all_songs():
     """Returns all Songs in database"""
-    fake_song_dict = {'title': 'Firework', 'author': 'Katy Perry'}
+    fake_song_dict = [{'title': 'Firework', 'author': 'Katy Perry'},
+                        {'title': 'Dancing With The Devil', 'author': 'Demi Lovato'}]
 
     return jsonify(fake_song_dict)
 
